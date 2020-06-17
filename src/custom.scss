@@ -59,7 +59,7 @@ h1 {
   margin-left: -(23.4375rem * .5);
   display: flex;
   flex-direction: column;
-  background: $teal url(./assets/BG-Snowy.svg) no-repeat center center;
+  background: $teal url(./assets/Weather_BG-Snowy.svg) no-repeat center center;
   background-size: cover !important;
 
   &.centered {
@@ -69,7 +69,7 @@ h1 {
   }
 
   &.sunny {
-    background: $yellow url(./assets/BG-Sunny.svg) no-repeat center center;
+    background: $yellow url(./assets/Weather_BG-Sunny.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -101,7 +101,7 @@ h1 {
   }
 
   &.partly-cloudy {
-    background: $lime url(./assets/BG-Partly-Cloudy.svg) no-repeat center center;
+    background: $lime url(./assets/Weather_BG-Partly-Cloudy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -133,7 +133,7 @@ h1 {
   }
 
   &.cloudy {
-    background: $green url(./assets/BG-Cloudy.svg) no-repeat center center;
+    background: $green url(./assets/Weather_BG-Cloudy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -165,7 +165,7 @@ h1 {
   }
 
   &.rainy {
-    background: $blue url(./assets/BG-Rainy.svg) no-repeat center center;
+    background: $blue url(./assets/Weather_BG-Rainy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -197,7 +197,7 @@ h1 {
   }
 
   &.snowy {
-    background: $teal url(./assets/BG-Snowy.svg) no-repeat center center;
+    background: $teal url(./assets/Weather_BG-Snowy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -229,7 +229,7 @@ h1 {
   }
 
   &.stormy {
-    background: $red url(./assets/BG-Stormy.svg) no-repeat center center;
+    background: $red url(./assets/Weather_BG-Stormy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
