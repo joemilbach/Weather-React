@@ -106,7 +106,7 @@ class ZipSearch extends React.Component {
           weather: result
         })
         this.weatherLocation(result.coord.lat,result.coord.lon)
-        event.target.blur()
+        target.blur();
       })
       .catch((error) => {
         console.log('Fetch error:', error.message)
