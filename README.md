@@ -1,5 +1,5 @@
 # Local Weather Widget
-Get the current weather by zipcode or city ([React App](https://github.com/facebook/create-react-app)).
+Get the current weather by zipcode or city ([React App](https://github.com/facebook/create-react-app) & [Yarn](https://classic.yarnpkg.com/en/)).
 
 ### `yarn install`
 install all dependencies for a project. The dependencies are retrieved from your project’s `package.json` file, and stored in the `yarn.lock` file.
