@@ -33,8 +33,7 @@ h1 {
   text-align: center;
 }
 
-h1,
-.form-group-search,
+.intro,
 .card-weather {
   position: relative;
   opacity: 1;
@@ -42,28 +41,35 @@ h1,
   transition: all .25s ease-out;
 }
 
-#root {
+#root,
+.app {
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
   overflow: hidden;
+  position: absolute;
 }
 
 .app {
   margin-top: 2rem;
   width: 23.4375rem;
   height: 41.6875rem;
+  left: 50%;
+  margin-left: -(23.4375rem * .5);
   display: flex;
   flex-direction: column;
-  background: $teal url(./assets/BG-Snowy.svg) no-repeat center bottom;
-  background-size: cover;
+  background: $teal url(./assets/BG-Snowy.svg) no-repeat center center;
+  background-size: cover !important;
 
   &.centered {
-    h1,
-    .form-group-search {
+    .intro {
       transform: translateY(14.75rem);
     }
   }
 
   &.sunny {
-    background: $yellow url(./assets/BG-Sunny.svg) no-repeat center bottom;
+    background: $yellow url(./assets/BG-Sunny.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -95,7 +101,7 @@ h1,
   }
 
   &.partly-cloudy {
-    background: $lime url(./assets/BG-Partly-Cloudy.svg) no-repeat center bottom;
+    background: $lime url(./assets/BG-Partly-Cloudy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -127,7 +133,7 @@ h1,
   }
 
   &.cloudy {
-    background: $green url(./assets/BG-Cloudy.svg) no-repeat center bottom;
+    background: $green url(./assets/BG-Cloudy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -159,7 +165,7 @@ h1,
   }
 
   &.rainy {
-    background: $blue url(./assets/BG-Rainy.svg) no-repeat center bottom;
+    background: $blue url(./assets/BG-Rainy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -191,7 +197,7 @@ h1,
   }
 
   &.snowy {
-    background: $teal url(./assets/BG-Snowy.svg) no-repeat center bottom;
+    background: $teal url(./assets/BG-Snowy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -223,7 +229,7 @@ h1,
   }
 
   &.stormy {
-    background: $red url(./assets/BG-Stormy.svg) no-repeat center bottom;
+    background: $red url(./assets/BG-Stormy.svg) no-repeat center center;
 
     .btn-reset {
       &:hover {
@@ -362,7 +368,6 @@ h1,
 
 .card-icn {
   text-align: center;
-  padding-top: 3rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -392,19 +397,25 @@ h1,
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+  #root,
+  .app {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+  }
+
   h1 {
     font-size: 8vw;
   }
 
   .app {
     margin-top: 0;
-    height: 100vh;
+    height: auto;
 
     &.centered {
-      h1,
-      .form-group-search {
-        transform: translateY(38vh);
+      .intro {
+        transform: translateY(35vh);
       }
     }
   }
@@ -426,31 +437,52 @@ h1,
   }
 }
 
-@media (max-width: 768px) and (min-width: 577px) and (orientation:landscape) {
+@media (max-width: 768px) and (min-width: 567px) and (orientation:landscape) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
   .app {
     margin-top: 0;
-    width: auto;
-    height: 100vh;
     background-position: center center;
 
     &.centered {
-      h1,
-      .form-group-search {
-        transform: translateY(28vh);
+      .intro {
+        transform: translateY(25vh);
       }
+    }
+  }
+
+  .card-date,
+  .card-location {
+    font-size: 1rem;
+  }
+
+  .card-icn-label,
+  .card-location {
+    font-size: 1.5rem;
+  }
+
+  .card-date {
+    .text-display {
+      font-size: 1.5rem;
     }
   }
 
   .card-icn {
     padding-top: 0;
+
+    .card-subtitle {
+      display: none;
+    }
   }
 
   .card-icn-item {
     width: 20%;
-    margin: -3rem auto 1rem;
+    margin: -3.75rem auto 1rem;
   }
 
   .card-icn-label {
-    font-size: 1.5rem;
+    margin-bottom: .5rem;
   }
 }

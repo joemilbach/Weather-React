@@ -170,21 +170,23 @@ class ZipSearch extends React.Component {
   render() {
     return (
       <main className={((typeof this.state.weather.main != "undefined") ? `app container-fluid py-3 ${this.weatherCondition(this.state.weather.weather[0].main)}` : 'app centered container-fluid py-3')}>
-        <h1>Local Weather Widget</h1>
-        <div className="form">
-          {this.state.inputs.map((input, idx) => (
-            <div key={input.name.toLowerCase()} className="form-group form-group-search">
-              <label className="sr-only" htmlFor={input.name.toLowerCase()}>{input.name}</label>
-              <input type="text" name={input.name.toLowerCase()} className="form-control form-control-search" placeholder="Enter zipcode or city name" value={input.value} onChange={(e) => this.searchInputChange(idx, e)} onKeyPress={(e) => this.searchSubmit(idx, e)}/>
-              {input.error && <div className="invalid-feedback">{input.error}</div>}
-              {input.value && <button type="button" className="btn btn-reset" onClick={this.clearSearch}><span className="sr-only">Reset</span></button>}
-            </div>
-          ))}
+        <div className="intro">
+          <h1>Local Weather Widget</h1>
+          <div className="form">
+            {this.state.inputs.map((input, idx) => (
+              <div key={input.name.toLowerCase()} className="form-group form-group-search">
+                <label className="sr-only" htmlFor={input.name.toLowerCase()}>{input.name}</label>
+                <input type="text" name={input.name.toLowerCase()} className="form-control form-control-search" placeholder="Enter zipcode or city name" value={input.value} onChange={(e) => this.searchInputChange(idx, e)} onKeyPress={(e) => this.searchSubmit(idx, e)}/>
+                {input.error && <div className="invalid-feedback">{input.error}</div>}
+                {input.value && <button type="button" className="btn btn-reset" onClick={this.clearSearch}><span className="sr-only">Reset</span></button>}
+              </div>
+            ))}
+          </div>
         </div>
         {(typeof this.state.weather.main != "undefined") ? (
         <div className="card card-weather">
           {this.dateBuilder(new Date())}
-          <div className="card-icn">
+          <div className="card-icn mt-auto">
             {this.decodeHTML(this.weatherCondition(this.state.weather.weather[0].main,true))}
             <h3 className="card-icn-label">
               {Math.round(this.state.weather.main.temp)}°C
