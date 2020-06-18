@@ -125,18 +125,18 @@ class ZipSearch extends React.Component {
   }
 
   decodeHTML(html) {
-    let rawHTML ={__html: html}
+    const rawHTML ={__html: html}
     return <svg className="card-icn-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.08 77.65" dangerouslySetInnerHTML={rawHTML} />
   }
 
   dateBuilder(d) {
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-    let day = days[d.getDay()]
-    let date = d.getDate()
-    let month = months[d.getMonth()]
-    let year = d.getFullYear()
+    const day = days[d.getDay()]
+    const date = d.getDate()
+    const month = months[d.getMonth()]
+    const year = d.getFullYear()
 
     return <div className="card-date"><span className="text-display">{day}</span> {date} {month} {year}</div>
   }
