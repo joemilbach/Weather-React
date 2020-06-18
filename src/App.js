@@ -34,7 +34,51 @@ const theme = {
   }
 }
 
-class LocationSearch extends React.Component {
+const decodeHTML = html => {
+  const rawHTML ={__html: html}
+  return <svg className="card-icn-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.08 77.65" dangerouslySetInnerHTML={rawHTML} />
+}
+
+const dateBuilder = d => {
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+  const day = days[d.getDay()]
+  const date = d.getDate()
+  const month = months[d.getMonth()]
+  const year = d.getFullYear()
+
+  return <div className="card-date"><span className="text-display">{day}</span> {date} {month} {year}</div>
+}
+
+const weatherCondition = (condition,icon = false) => {
+  switch (condition)
+  {
+    case 'Mist':
+    case 'Smoke':
+    case 'Haze':
+    case 'Dust':
+    case 'Fog':
+    case 'Sand':
+    case 'Ash':
+    case 'Squall':
+      return ((icon) ? theme.partlyCloudy.icon : theme.partlyCloudy.class)
+    case 'Thunderstorm':
+    case 'Tornado':
+      return ((icon) ? theme.stormy.icon : theme.stormy.class)
+    case 'Drizzle':
+    case 'Rain':
+      return ((icon) ? theme.rainy.icon : theme.rainy.class)
+    case 'Clouds':
+      return ((icon) ? theme.cloudy.icon : theme.cloudy.class)
+    case 'Snow':
+      return ((icon) ? theme.snowy.icon : theme.snowy.class)
+    default:
+      return ((icon) ? theme.sunny.icon : theme.sunny.class)
+  }
+}
+
+class WeatherSearch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -122,53 +166,9 @@ class LocationSearch extends React.Component {
     })
   }
 
-  decodeHTML = html => {
-    const rawHTML ={__html: html}
-    return <svg className="card-icn-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.08 77.65" dangerouslySetInnerHTML={rawHTML} />
-  }
-
-  dateBuilder = d => {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-
-    const day = days[d.getDay()]
-    const date = d.getDate()
-    const month = months[d.getMonth()]
-    const year = d.getFullYear()
-
-    return <div className="card-date"><span className="text-display">{day}</span> {date} {month} {year}</div>
-  }
-
-  weatherCondition = (condition,icon = false) => {
-    switch (condition)
-    {
-      case 'Mist':
-      case 'Smoke':
-      case 'Haze':
-      case 'Dust':
-      case 'Fog':
-      case 'Sand':
-      case 'Ash':
-      case 'Squall':
-        return ((icon) ? theme.partlyCloudy.icon : theme.partlyCloudy.class)
-      case 'Thunderstorm':
-      case 'Tornado':
-        return ((icon) ? theme.stormy.icon : theme.stormy.class)
-      case 'Drizzle':
-      case 'Rain':
-        return ((icon) ? theme.rainy.icon : theme.rainy.class)
-      case 'Clouds':
-        return ((icon) ? theme.cloudy.icon : theme.cloudy.class)
-      case 'Snow':
-        return ((icon) ? theme.snowy.icon : theme.snowy.class)
-      default:
-        return ((icon) ? theme.sunny.icon : theme.sunny.class)
-    }
-  }
-
   render() {
     return (
-      <main className={((typeof this.state.weather.main != "undefined") ? `app container-fluid py-3 ${this.weatherCondition(this.state.weather.weather[0].main)}` : 'app centered container-fluid py-3')}>
+      <main className={((typeof this.state.weather.main != "undefined") ? `app container-fluid py-3 ${weatherCondition(this.state.weather.weather[0].main)}` : 'app centered container-fluid py-3')}>
         <div className="intro">
           <h1>Local Weather Widget</h1>
           <div className="form">
@@ -184,9 +184,9 @@ class LocationSearch extends React.Component {
         </div>
         {(typeof this.state.weather.main != "undefined") ? (
         <div className="card card-weather">
-          {this.dateBuilder(new Date())}
+          {dateBuilder(new Date())}
           <div className="card-icn mt-auto">
-            {this.decodeHTML(this.weatherCondition(this.state.weather.weather[0].main,true))}
+            {decodeHTML(weatherCondition(this.state.weather.weather[0].main,true))}
             <h3 className="card-icn-label">
               {Math.round(this.state.weather.main.temp)}°C
             </h3>
@@ -206,7 +206,7 @@ class LocationSearch extends React.Component {
 
 function App() {
   return (
-    <LocationSearch />
+    <WeatherSearch />
   );
 }
 
