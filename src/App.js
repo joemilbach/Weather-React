@@ -209,7 +209,7 @@ class WeatherSearch extends React.Component {
 
 function App() {
   return (
-    <WeatherSearch ref={ WeatherSearch => { window.WeatherSearch = WeatherSearch }} />
+    <WeatherSearch />
   );
 }
 
