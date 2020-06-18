@@ -116,10 +116,29 @@ class WeatherSearch extends React.Component {
     })
   }
 
+  apiErrorHandling = (response,idx) => {
+    let error = ''
+
+    if(!response.ok) {
+      error = `Error ${response.statusText}`
+
+      this.setState({
+        inputs: [{
+          ...this.state.inputs[idx],
+            value: '',
+            error
+        }]
+      });
+
+      throw new Error(`${response.status} (${response.statusText})`)
+    } else {
+      return response.json()
+    }
+  }
+
   searchSubmit = (idx,event) => {
     const target = event.target
     let apiCall = ''
-    let error = ''
 
     if (event.key === "Enter") {
       if (isNaN(target.value)) {
@@ -128,37 +147,21 @@ class WeatherSearch extends React.Component {
         apiCall = `${api.weatherBaseUrl}?zip=${target.value}&units=imperial&appid=${api.weatherKey}`
       }
       fetch(apiCall)
-      .then(response => {
-        if(!response.ok) {
-          error = `Error ${response.statusText}`
-          this.setState({
-            inputs: [{
-              ...this.state.inputs[idx],
-                value: target.value,
-                error
-            }]
-          });
-          throw new Error(`${response.status} (${response.statusText})`)
-        } else {
-          return response.json()
-        }
-      })
+      .then(response => this.apiErrorHandling(response,idx))
       .then(result => {
         this.setState({
           weather: result
         })
-        this.weatherLocation(result.coord.lat,result.coord.lon)
+        this.weatherLocation(result.coord.lat,result.coord.lon,target,idx)
         target.blur();
       })
-      .catch((error) => {
-        console.log('Fetch error:', error.message)
-      })
+      .catch((error) => console.log('Fetch error:', error.message))
     }
   }
 
-  weatherLocation = (lat,lon) => {
+  weatherLocation = (lat,lon,idx) => {
     fetch(`${api.mapBaseUrl}?key=${api.mapKey}&location=${lat},${lon}`)
-    .then(res => res.json())
+    .then(response => this.apiErrorHandling(response,idx))
     .then(result => {
       this.setState({
         location: result.results[0].locations[0]
@@ -206,7 +209,7 @@ class WeatherSearch extends React.Component {
 
 function App() {
   return (
-    <WeatherSearch />
+    <WeatherSearch ref={ WeatherSearch => { window.WeatherSearch = WeatherSearch }} />
   );
 }
 
