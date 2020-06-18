@@ -34,7 +34,7 @@ const theme = {
   }
 }
 
-class ZipSearch extends React.Component {
+class LocationSearch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,11 +53,9 @@ class ZipSearch extends React.Component {
     }
   }
 
-  clearSearch = () => {
-    return this.setState(this.initialState)
-  }
+  clearSearch = () => this.setState(this.initialState)
 
-  searchInputChange = (idx, event) => {
+  searchInputChange = (idx,event) => {
     const target = event.target
     let error = ''
 
@@ -74,7 +72,7 @@ class ZipSearch extends React.Component {
     })
   }
 
-  searchSubmit = (idx, event) => {
+  searchSubmit = (idx,event) => {
     const target = event.target
     let apiCall = ''
     let error = ''
@@ -124,12 +122,12 @@ class ZipSearch extends React.Component {
     })
   }
 
-  decodeHTML = (html) => {
+  decodeHTML = html => {
     const rawHTML ={__html: html}
     return <svg className="card-icn-item" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.08 77.65" dangerouslySetInnerHTML={rawHTML} />
   }
 
-  dateBuilder = (d) => {
+  dateBuilder = d => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
@@ -208,7 +206,7 @@ class ZipSearch extends React.Component {
 
 function App() {
   return (
-    <ZipSearch />
+    <LocationSearch />
   );
 }
 
