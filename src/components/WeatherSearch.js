@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import api from "./api";
-import decodeHTML from "./decodeHTML";
 import weatherCondition from "./weatherCondition";
+import WeatherIcon from "./WeatherIcon";
 import dateBuilder from "./dateBuilder";
 
 class WeatherSearch extends Component {
@@ -97,7 +97,7 @@ class WeatherSearch extends Component {
 
   render() {
     return (
-      <main className={((typeof this.state.weather.main != "undefined") ? `app container-fluid py-3 ${weatherCondition(this.state.weather.weather[0].main)}` : 'app centered container-fluid py-3')}>
+      <main className={((typeof this.state.location.adminArea5 != 'undefined') ? `app container-fluid py-3 ${weatherCondition(this.state.weather.weather[0].main)}` : 'app centered container-fluid py-3')}>
         <div className="intro">
           <h1>Local Weather Widget</h1>
           <div className="form">
@@ -111,11 +111,11 @@ class WeatherSearch extends Component {
             ))}
           </div>
         </div>
-        {(typeof this.state.weather.main != "undefined") ? (
+        {(typeof this.state.location.adminArea5 != 'undefined') ? (
         <div className="card card-weather">
           {dateBuilder(new Date())}
           <div className="card-icn mt-auto">
-            {decodeHTML(weatherCondition(this.state.weather.weather[0].main,true))}
+            <WeatherIcon>{weatherCondition(this.state.weather.weather[0].main)}</WeatherIcon>
             <h3 className="card-icn-label">
               {Math.round(this.state.weather.main.temp)}°C
             </h3>

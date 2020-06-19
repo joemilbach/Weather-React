@@ -1,6 +1,4 @@
-import theme from "./theme";
-
-const weatherCondition = (condition,icon = false) => {
+const weatherCondition = (condition) => {
   switch (condition)
   {
     case 'Mist':
@@ -11,19 +9,19 @@ const weatherCondition = (condition,icon = false) => {
     case 'Sand':
     case 'Ash':
     case 'Squall':
-      return ((icon) ? theme.partlyCloudy.icon : theme.partlyCloudy.class)
+      return `partly-cloudy`
     case 'Thunderstorm':
     case 'Tornado':
-      return ((icon) ? theme.stormy.icon : theme.stormy.class)
+      return `stormy`
     case 'Drizzle':
     case 'Rain':
-      return ((icon) ? theme.rainy.icon : theme.rainy.class)
+      return `rainy`
     case 'Clouds':
-      return ((icon) ? theme.cloudy.icon : theme.cloudy.class)
+      return `cloudy`
     case 'Snow':
-      return ((icon) ? theme.snowy.icon : theme.snowy.class)
+      return `snowy`
     default:
-      return ((icon) ? theme.sunny.icon : theme.sunny.class)
+      return `sunny`
   }
 }
 

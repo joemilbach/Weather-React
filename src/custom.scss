@@ -373,7 +373,7 @@ h1 {
   flex-direction: column;
 }
 
-.card-icn-item {
+.card-icn > svg {
   width: 50%;
   margin: 0 auto 2rem;
 }
@@ -476,7 +476,7 @@ h1 {
     }
   }
 
-  .card-icn-item {
+  .card-icn > svg {
     width: 20%;
     margin: -3.75rem auto 1rem;
   }
