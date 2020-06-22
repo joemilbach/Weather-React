@@ -113,7 +113,7 @@ class WeatherSearch extends Component {
             {this.state.inputs.map((input, idx) => (
               <div key={input.name.toLowerCase()} className="form-group form-group-search">
                 <label className="sr-only" htmlFor={input.name.toLowerCase()}>{input.name}</label>
-                <input type="text" name={input.name.toLowerCase()} className="form-control form-control-search" placeholder="Enter city and state" value={input.value} onChange={(e) => this.searchInputChange(idx, e)} onKeyPress={(e) => this.searchSubmit(idx, e)}/>
+                <input type="text" name={input.name.toLowerCase()} className="form-control form-control-search" placeholder="Enter City,ST or State" value={input.value} onChange={(e) => this.searchInputChange(idx, e)} onKeyPress={(e) => this.searchSubmit(idx, e)}/>
                 {input.error && <div className="invalid-feedback">{input.error}</div>}
                 {input.value && <button type="button" className="btn btn-reset" onClick={this.clearSearch}><span className="sr-only">Reset</span></button>}
               </div>
