@@ -6,7 +6,7 @@ import { ReactComponent as SnowySvg } from "../assets/Weather_ICN-Snowy.svg";
 import { ReactComponent as StormySvg } from "../assets/Weather_ICN-Stormy.svg";
 import { ReactComponent as SunnySvg } from "../assets/Weather_ICN-Sunny.svg";
 
-export const WeatherIcon = (props) => {
+const WeatherIcon = (props) => {
     switch (props.children)
     {
       case 'partly-cloudy':

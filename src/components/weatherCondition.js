@@ -1,4 +1,4 @@
-const weatherCondition = (condition) => {
+const WeatherCondition = (condition) => {
   switch (condition)
   {
     case 'Mist':
@@ -25,4 +25,4 @@ const weatherCondition = (condition) => {
   }
 }
 
-export default weatherCondition;
+export default WeatherCondition;
