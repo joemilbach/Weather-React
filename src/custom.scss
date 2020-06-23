@@ -303,8 +303,7 @@ h1 {
   }
 }
 
-.form,
-.pacman {
+.form {
   position: relative;
 }
 
@@ -449,7 +448,7 @@ h1 {
   > svg:nth-child(5),
   > svg:nth-child(6),
   > svg:nth-child(7) {
-    transform: translate(-50%, 25%) scale(.7);
+    transform: translate(-50%, 45%) scale(.7);
   }
 
   > svg:nth-child(2) {
