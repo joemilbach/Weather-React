@@ -70,6 +70,7 @@ class WeatherSearch extends Component {
               weather: currentResults.current,
               location: currentResults.results[0].locations[locationSelect]
             })
+            target.blur();
           } else {
             error = `Location unknown try again`
 
