@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import Api from "./Api"
+import { ReactComponent as CloudySvg } from "../assets/Weather_ICN-Cloudy.svg";
+import { ReactComponent as SunnySvg } from "../assets/Weather_ICN-Sunny.svg";
 import WeatherCondition from "./WeatherCondition"
 import WeatherCard from "./WeatherCard"
 
@@ -109,7 +111,7 @@ class WeatherSearch extends Component {
         <div className="intro">
           <h1>Local Weather Widget</h1>
           <div className="form">
-            {this.state.isLoading ? <div className="loader"><div className="pacman"><div></div><div></div><div></div><div></div><div></div></div></div> : ''}
+            {this.state.isLoading ? <div className="loader"><SunnySvg /><CloudySvg /><CloudySvg /><CloudySvg /><CloudySvg /><CloudySvg /><CloudySvg /><span>Loading...</span></div> : ''}
             {this.state.inputs.map((input, idx) => (
               <div key={input.name.toLowerCase()} className="form-group form-group-search">
                 <label className="sr-only" htmlFor={input.name.toLowerCase()}>{input.name}</label>
