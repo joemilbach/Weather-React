@@ -403,15 +403,14 @@ h1 {
   left: 0;
   z-index: 10;
   overflow: hidden;
-  box-sizing: border-box;
+  font-size: 1.25rem;
   display: flex;
-  flex: 0 1 auto;
   flex-direction: column;
   width: 100%;
   height: 2.75rem;
   align-items: center;
   justify-content: center;
-  background-color: rgba($teal,.75);
+  background-color: rgba($teal,.8);
 
   > span {
     z-index: 15;
@@ -424,7 +423,7 @@ h1 {
     height: 2.75rem;
     opacity: 0;
     position: absolute;
-    top: 0;
+    top: -.75rem;
     left: -2.75rem;
     z-index: 10;
     transform: translate(-50%, 0);
@@ -434,7 +433,7 @@ h1 {
     left: 1rem;
     opacity: .85;
     z-index: 5;
-    height: 8.5rem;
+    height: 6.5rem;
 
     path,
     circle {
