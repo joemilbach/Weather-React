@@ -1,7 +1,7 @@
-import React from "react";
-import WeatherCondition from "./WeatherCondition";
-import WeatherIcon from "./WeatherIcon";
-import DateBuilder from "./DateBuilder";
+import React from "react"
+import WeatherCondition from "./WeatherCondition"
+import WeatherIcon from "./WeatherIcon"
+import DateBuilder from "./DateBuilder"
 
 const WeatherCard = (props) => {
   return (
@@ -25,4 +25,4 @@ const WeatherCard = (props) => {
   )
 }
 
-export default WeatherCard;
+export default WeatherCard

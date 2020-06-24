@@ -25,4 +25,4 @@ const WeatherCondition = (condition) => {
   }
 }
 
-export default WeatherCondition;
+export default WeatherCondition

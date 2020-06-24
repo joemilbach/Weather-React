@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 const DateBuilder = d => {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -9,7 +9,7 @@ const DateBuilder = d => {
   const month = months[d.getMonth()]
   const year = d.getFullYear()
 
-  return <div className="card-date"><span className="text-display">{day}</span> {date} {month} {year}</div>
+  return <div className="card-date"><span className="text-display">{day}</span> {month} {date}, {year}</div>
 }
 
-export default DateBuilder;
+export default DateBuilder
