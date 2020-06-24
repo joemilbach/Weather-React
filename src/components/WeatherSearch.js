@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Api from "./Api"
-import { ReactComponent as CloudySvg } from "../assets/Weather_ICN-Cloudy.svg";
-import { ReactComponent as SunnySvg } from "../assets/Weather_ICN-Sunny.svg";
+import { ReactComponent as CloudySvg } from "../assets/Weather_ICN-Cloudy.svg"
+import { ReactComponent as SunnySvg } from "../assets/Weather_ICN-Sunny.svg"
 import WeatherCondition from "./WeatherCondition"
 import WeatherCard from "./WeatherCard"
 
@@ -22,6 +22,10 @@ class WeatherSearch extends Component {
       location: {},
       isLoading: false
     }
+  }
+
+  componentDidMount() {
+    this.getSavedResults()
   }
 
   clearSearch = () => this.setState(this.initialState)
@@ -57,7 +61,9 @@ class WeatherSearch extends Component {
               weather: finalResults.current
             })
 
-            target.blur();
+            this.saveResults()
+
+            target.blur()
           }
         })
       })
@@ -115,6 +121,16 @@ class WeatherSearch extends Component {
     }).catch(e => console.log(e))
   }
 
+  saveResults = () => {
+    localStorage.setItem('locationWeather', JSON.stringify(this.state))
+  }
+
+  getSavedResults = () => {
+    if(localStorage.getItem('locationWeather') !== null) {
+      this.setState(JSON.parse(localStorage.getItem('locationWeather')))
+    }
+  }
+
   render() {
     return (
       <main className={((typeof this.state.weather.temp != 'undefined') ? `app container-fluid py-3 ${WeatherCondition(this.state.weather.weather[0].main)}` : 'app centered container-fluid py-3')}>
@@ -138,4 +154,4 @@ class WeatherSearch extends Component {
   }
 }
 
-export default WeatherSearch;
+export default WeatherSearch

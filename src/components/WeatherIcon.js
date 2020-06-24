@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import { ReactComponent as CloudySvg } from "../assets/Weather_ICN-Cloudy.svg"
 import { ReactComponent as PartlyCloudySvg } from "../assets/Weather_ICN-Partly-Cloudy.svg"
 import { ReactComponent as RainySvg } from "../assets/Weather_ICN-Rainy.svg"
