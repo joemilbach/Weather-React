@@ -25,3 +25,4 @@ yarn-error.log*
 
 # source files
 src/assets/Edit
+src/components/Api.js

@@ -15,7 +15,7 @@ class WeatherSearch extends Component {
   get initialState() {
     return {
       inputs: [
-        { name: 'Search', value: '', error: null}
+        { name: 'Search', value: '', error: null }
       ],
       query: '',
       weather: {},
